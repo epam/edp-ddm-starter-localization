@@ -1,13 +1,12 @@
 # ddm-starter-localization
 
-##### This is a library used for getting localized messages
+### Overview
 
-## Usage
+* This is a library used for getting localized messages.
 
-Auto-configuration should be activated through the `@SpringBootApplication` or `@EnableAutoConfiguration` annotation in main class.
+### Usage
 
-##### To start using the library:
-* Specify dependency in your service:
+1. Specify dependency in your service:
 
 ```xml
 
@@ -21,5 +20,20 @@ Auto-configuration should be activated through the `@SpringBootApplication` or `
   ...
 </dependencies>
 ```
-* Inject `com.epam.digital.data.platform.starter.localization.MessageResolver` to your service
-* Implement interface `com.epam.digital.data.platform.starter.localization.MessageTitle` to get message by MessageTitle type
+
+2. Auto-configuration should be activated through the `@SpringBootApplication`
+   or `@EnableAutoConfiguration` annotation in main class.
+   
+3. Inject `com.epam.digital.data.platform.starter.localization.MessageResolver` to your service;
+4. Implement interface `com.epam.digital.data.platform.starter.localization.MessageTitle` to get
+  message by MessageTitle type.
+
+### Test execution
+
+* Tests could be run via maven command:
+    * `mvn verify` OR using appropriate functions of your IDE.
+    
+### License
+
+The ddm-starter-localization is released under version 2.0 of
+the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
