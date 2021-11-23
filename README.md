@@ -35,5 +35,5 @@
     
 ### License
 
-The ddm-starter-localization is released under version 2.0 of
-the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
+The ddm-starter-localization is Open Source software released under
+the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
