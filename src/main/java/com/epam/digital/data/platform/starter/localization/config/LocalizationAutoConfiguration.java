@@ -20,12 +20,14 @@ import com.epam.digital.data.platform.starter.localization.MessageResolver;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -41,6 +43,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
  */
 @Configuration
 @ComponentScan(basePackageClasses = MessageResolver.class)
+@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 public class LocalizationAutoConfiguration implements WebMvcConfigurer {
 
   @Bean
