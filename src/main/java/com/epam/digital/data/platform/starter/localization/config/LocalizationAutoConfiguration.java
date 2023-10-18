@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 EPAM Systems.
+ * Copyright 2023 EPAM Systems.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@
 
 package com.epam.digital.data.platform.starter.localization.config;
 
+import com.epam.digital.data.platform.starter.localization.JsonMessageSource;
 import com.epam.digital.data.platform.starter.localization.MessageResolver;
-import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
@@ -26,7 +26,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -53,7 +52,7 @@ public class LocalizationAutoConfiguration implements WebMvcConfigurer {
   }
 
   @Bean
-  public LocaleResolver localeResolver(@Value("${locale.language:ukr}") String locale) {
+  public LocaleResolver localeResolver(@Value("${locale.language:uk}") String locale) {
     SessionLocaleResolver localeResolver = new SessionLocaleResolver();
     localeResolver.setDefaultLocale(new Locale(locale));
     return localeResolver;
@@ -67,12 +66,11 @@ public class LocalizationAutoConfiguration implements WebMvcConfigurer {
   }
 
   @Bean
-  public ResourceBundleMessageSource messageSource(
+  public JsonMessageSource messageSource(
       @Value("${locale.resource-basename:lang/messages}") String resourceBasename) {
-    ResourceBundleMessageSource rs = new ResourceBundleMessageSource();
+    JsonMessageSource rs = new JsonMessageSource();
     rs.setUseCodeAsDefaultMessage(true);
-    rs.setDefaultEncoding(StandardCharsets.UTF_8.name());
-    rs.setBasename(resourceBasename);
+    rs.setBaseName(resourceBasename);
     return rs;
   }
 
